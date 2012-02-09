@@ -29,7 +29,7 @@ class dukesbank::db (
     privileges => [ 'all' ],
     require    => Database_user["${username}@localhost"],
   }
-  database_grant { "${username}/${database}":
+  database_grant { "${username}@%/${database}":
     privileges => [ 'all' ],
     require    => Database_user["${username}@%"],
   }
@@ -41,7 +41,7 @@ class dukesbank::db (
     logoutput   => true,
     refreshonly => true,
     subscribe   => Database[$database],
-    require     => Database_grant["${username}@localhost/${database}", "${username}/${database}"],
+    require     => Database_grant["${username}@localhost/${database}", "${username}@%/${database}"],
   }
 
 }
