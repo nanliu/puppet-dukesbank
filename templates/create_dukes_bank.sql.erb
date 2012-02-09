@@ -1,10 +1,12 @@
--- Database and account creation handled within Puppet.
--- create user 'dukes_admin'@'localhost' identified by 'dukes_pwd';
--- create user 'dukes_admin' identified by 'dukes_pwd';
--- create database dukes_db;
--- grant all privileges on dukes_db.* to 'dukes_admin'@'localhost' identified by 'dukes_pwd';
--- grant all privileges on dukes_db.* to 'dukes_admin' identified by 'dukes_pwd';
--- flush privileges;
+/*
+Database and account creation handled within Puppet.
+create user 'dukes_admin'@'localhost' identified by 'dukes_pwd';
+create user 'dukes_admin' identified by 'dukes_pwd';
+create database dukes_db;
+grant all privileges on dukes_db.* to 'dukes_admin'@'localhost' identified by 'dukes_pwd';
+grant all privileges on dukes_db.* to 'dukes_admin' identified by 'dukes_pwd';
+flush privileges;
+*/
 
 USE <%= database %>;
 
