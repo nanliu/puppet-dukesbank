@@ -47,11 +47,11 @@ class dukesbank::db (
   }
 
   exec { "${database}-import":
-    command     => "/usr/bin/mysql -u ${username} -p${password} -h localhost ${database} < /opt/dukes/bank/create_dukes.bank.sql",
+    command     => "/usr/bin/mysql -u ${username} -p${password} -h localhost ${database} < /opt/dukesbank/create_dukes.bank.sql",
     logoutput   => true,
     refreshonly => true,
     subscribe   => Database[$database],
-    require     => [ Database_grant["${username}@localhost/${database}", "${username}@%/${database}"], 
+    require     => [ Database_grant["${username}@localhost/${database}", "${username}@%/${database}"],
                      File['create_dukes_bank.sql'] ],
   }
 
