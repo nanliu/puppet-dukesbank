@@ -39,7 +39,7 @@ class dukesbank::db (
   }
 
   file { 'create_dukes_bank.sql':
-    path    => '/opt/dukes/bank/create_dukes_bank.sql',
+    path    => '/opt/dukesbank/create_dukes_bank.sql',
     owner   => '0',
     group   => '0',
     mode    => '0400',
