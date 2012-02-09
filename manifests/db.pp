@@ -34,14 +34,25 @@ class dukesbank::db (
     require    => Database_user["${username}@%"],
   }
 
-  $sql = template('dukesbank/create_dukes_bank.sql.erb')
+  file { '/opt/dukesbank':
+    ensure => directory,
+  }
+
+  file { 'create_dukes_bank.sql':
+    path    => '/opt/dukes/bank/create_dukes_bank.sql',
+    owner   => '0',
+    group   => '0',
+    mode    => '0400',
+    content => template('dukesbank/create_dukes_bank.sql.erb'),
+  }
 
   exec { "${database}-import":
-    command     => "/usr/bin/mysql -u ${username} -p${password} -h localhost ${database} < ${sql}",
+    command     => "/usr/bin/mysql -u ${username} -p${password} -h localhost ${database} < /opt/dukes/bank/create_dukes.bank.sql",
     logoutput   => true,
     refreshonly => true,
     subscribe   => Database[$database],
-    require     => Database_grant["${username}@localhost/${database}", "${username}@%/${database}"],
+    require     => [ Database_grant["${username}@localhost/${database}", "${username}@%/${database}"], 
+                     File['create_dukes_bank.sql'] ],
   }
 
 }
