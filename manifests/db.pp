@@ -47,7 +47,7 @@ class dukesbank::db (
   }
 
   exec { "${database}-import":
-    command     => "/usr/bin/mysql -u ${username} -p${password} -h localhost ${database} < /opt/dukesbank/create_dukes.bank.sql",
+    command     => "/usr/bin/mysql -u ${username} -p${password} -h localhost ${database} < /opt/dukesbank/create_dukes_bank.sql",
     logoutput   => true,
     refreshonly => true,
     subscribe   => Database[$database],
