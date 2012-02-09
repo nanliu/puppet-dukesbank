@@ -19,7 +19,7 @@ class dukesbank::db (
     require       => Database[$database],
   }
 
-  database_user { $username:
+  database_user { "${username}@'%'":
     ensure        => present,
     password_hash => mysql_password($password),
     require       => Database[$database],
@@ -31,7 +31,7 @@ class dukesbank::db (
   }
   database_grant { "${username}/${database}":
     privileges => [ 'all' ],
-    require    => Database_user[$username],
+    require    => Database_user["${username}@'%'"],
   }
 
   $sql = template('dukesbank/create_dukes_bank.sql.erb')
