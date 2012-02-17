@@ -29,6 +29,7 @@ class dukesbank::db (
     privileges => [ 'all' ],
     require    => Database_user["${username}@localhost"],
   }
+
   database_grant { "${username}@%/${database}":
     privileges => [ 'all' ],
     require    => Database_user["${username}@%"],

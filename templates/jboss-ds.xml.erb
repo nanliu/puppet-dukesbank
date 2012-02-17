@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<datasources>
+    <local-tx-datasource>
+        <driver-class>
+           com.mysql.jdbc.Driver
+        </driver-class>
+        <user-name>
+            <%=db_username%>
+        </user-name>
+        <jndi-name>
+            dukesBankDS
+        </jndi-name>
+        <password>
+            <%=db_password%>
+        </password>
+        <connection-url>
+            jdbc:mysql://<%=db_host%>:<%=db_port%>/dukes_db
+        </connection-url>
+        <use-java-context>
+            false
+        </use-java-context>
+    </local-tx-datasource>
+</datasources>
