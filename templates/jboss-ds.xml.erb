@@ -5,16 +5,16 @@
            com.mysql.jdbc.Driver
         </driver-class>
         <user-name>
-            <%=db_username%>
+            <%=username%>
         </user-name>
         <jndi-name>
             dukesBankDS
         </jndi-name>
         <password>
-            <%=db_password%>
+            <%=password%>
         </password>
         <connection-url>
-            jdbc:mysql://<%=db_host%>:<%=db_port%>/dukes_db
+            jdbc:mysql://<%=db_host%>:<%=db_port%>/<%=database%>
         </connection-url>
         <use-java-context>
             false
