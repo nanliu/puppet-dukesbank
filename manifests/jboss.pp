@@ -14,7 +14,7 @@ class dukesbank::jboss (
     source => 'puppet:///modules/dukesbank/mysql.jdbc-5.1.6.jar',
   }
 
-  jboss::config { 'jboss-ds.xml':
+  jboss::conf { 'jboss-ds.xml':
     content => template('dukesbank/jboss-ds.xml.erb'),
   }
 
